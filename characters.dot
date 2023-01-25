@@ -1,0 +1,157 @@
+// A graph of all/most of the named characters of The Adventure Zone: Steeplechase.
+//
+// One very notable omission is the creator of Steeplechase, Carmine Denton, who is technically connected to everyone,
+// which would massively complicate the graph.
+//
+// P.S.: Whoever made the transcripts is a saint.
+
+graph G {
+    node [shape=box];
+
+    // Characters grouped by episode, in order of appearance.
+
+    // Episode 0
+    bpunchley [label="Beef Punchley", style="filled"]; // Played by Travis McElroy.
+    mpretty [label="Montrose Pretty", style="filled"]; // Played by Griffin McElroy.
+    edreadway [label="Emerich Dreadway", style="filled"]; // Played by Clint McElroy.
+    
+    pmervin [label="Poppy Mervin"]; // Owner of Poppy's Place, employer of the main characters.
+    eshabon [label="Eustace Shabon"]; // Hard light grandpa who works at Whittle Around.
+    vgold [label="Victrola Gold"]; // Owner of Anachroknickknacks.
+
+    // Episode 1
+    krystal [label="Krystal", style="dashed"]; // Played by Autumn Seavey Hicks.
+    gravel [label="Gravel"]; // Mission giver and former employee of Denton's.
+    slipper [label="Slipper"]; // Generic goon, one of Gravel's guys.
+    matchstick [label="Matchstick"]; // Generic goon, one of Gravel's guys.
+    trashbag [label="Trashbag †"]; // Generic goon, one of Gravel's guys. Died in episode 11.
+    kevin [label="Kevin"]; // Guard at the Prize Pantry.
+    dan [label="Dan"]; // Employee at the Prize Pantry.
+
+    // Episode 2
+    weaver [label="The Weaver/Nanofather", style="dashed"]; // Unknown. Speaks through Justin McElroy.
+
+    // Episode 3
+    ppantry [label="Sticky Fingers Paul Pantry"]; // Owner of the Prize Pantry.
+
+    // Episode 4
+    bshookles [label="Bart Shookles", style="dashed"]; // The Weaver's cat.
+    sdoug [label="Short Doug"]; // A "friend" of Paul's.
+    odoug [label="Old Doug"]; // Another "friend" of Paul's.
+    ddavis [label="Darla Davis"]; // A private investigator.
+    mdoug [label="Mean Doug"]; // Plays saxophone outside of Darla's office.
+
+    // Episode 5
+    dred [label="David Red"]; // Sinnuendo client.
+    ctouch [label="Chad Touch"]; // Sinnuendo employee.
+    jclay [label="Johnny Clay"]; // Hard light waiter at Sinnuendo.
+    raúl [label="Raúl"]; // Hard light waiter at Sinnuendo.
+
+    // Episode 6
+    marylin [label="Marylin", style="dashed"]; // One of Krystal's followers.
+    dpretty [label="Denise Pretty"]; // Montrose's wife. (?)
+    ppretty [label="Patricia Pretty"]; // Montrose's daughter. (?)
+    chan [label="Chan"]; // Guard at Sinnuendo.
+    paul [label="Paul"]; // Guard at Sinnuendo.
+
+    // Episode 7
+    jrouge [label="Jacques Rouge"]; // Leader of a group of thieves who want to steal the Stealswell diamond.
+    vogel [label="Vogel"]; // One of Jacques' thieves.
+    tonio [label="Tonio"]; // One of Jacques' thieves.
+    funnyman [label="Funny Man"]; // One of Jacques' thieves.
+
+    // Episode 9
+    kevecca [label="Kevecca", style="dashed"]; // Unknown. Presumably the granddaughter of the Nanofather.
+
+    subgraph episode0 {
+        bpunchley -- mpretty;
+        bpunchley -- edreadway;
+        mpretty -- edreadway;
+        
+        bpunchley -- pmervin;
+        mpretty -- pmervin;
+        edreadway -- pmervin;
+
+        edreadway -- eshabon;
+        
+        bpunchley -- vgold;
+        mpretty -- vgold;
+        edreadway -- vgold;
+    }
+
+    subgraph episode1 {
+        krystal;
+
+        bpunchley -- gravel;
+        mpretty -- gravel;
+        edreadway -- gravel;
+
+        gravel -- slipper;
+        gravel -- matchstick;
+        gravel -- trashbag;
+
+        mpretty -- kevin;
+
+        bpunchley -- dan;
+
+        mpretty -- matchstick;
+    }
+
+    subgraph episode3 {
+        ppantry -- bpunchley;
+        ppantry -- mpretty;
+        ppantry -- edreadway;
+    }
+
+    subgraph episode4 {
+        weaver -- bshookles;
+
+        ppantry -- sdoug;
+        ppantry -- odoug;
+
+        sdoug -- ddavis;
+        
+        mdoug -- bpunchley;
+        mdoug -- mpretty;
+        mdoug -- edreadway;
+        ddavis -- mdoug;
+    }
+
+    subgraph episode5 {
+        ddavis -- dred;
+        ddavis -- ctouch;
+
+        ctouch -- dred;
+
+        edreadway -- jclay;
+        edreadway -- raúl;
+    }
+
+    subgraph episode6 {
+        krystal -- marylin;
+
+        mpretty -- dpretty;
+        mpretty -- ppretty;
+
+        dpretty -- ppretty;
+
+        ctouch -- chan;
+        ctouch -- paul;
+    }
+
+    subgraph episode8 {
+        mpretty -- jrouge;
+
+        jrouge -- vogel;
+        jrouge -- tonio;
+        jrouge -- funnyman;
+
+        mpretty -- vogel;
+        mpretty -- tonio;
+        mpretty -- funnyman;
+    }
+    
+    subgraph episode9 {
+        weaver -- kevecca;
+    }
+}
