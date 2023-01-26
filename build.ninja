@@ -1,5 +1,0 @@
-rule dot2png
-  command = dot -Tpng -Gdpi=300 -o $out $in
-  description = Convert $in to $out
-
-build characters.png: dot2png characters.dot
